@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChifoBots - Bot Shop</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            color: #ddd;
+            background-color: #121212;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            background-color: #1f1f1f;
+            padding: 15px;
+            text-align: center;
+            font-size: 2.5em;
+            color: #ffffff;
+            text-transform: uppercase;
+        }
+        nav {
+            background-color: #1f1f1f;
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+            flex-wrap: wrap;
+        }
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 1.1em;
+        }
+        nav a:hover {
+            background-color: #00e5b0;
+            border-radius: 5px;
+        }
+        main {
+            flex-grow: 1;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .product {
+            background-color: #2a2a2a;
+            border-radius: 10px;
+            padding: 25px;
+            margin: 20px;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        .product h2 {
+            font-size: 2em;
+            color: #00e5b0;
+        }
+        .product p {
+            font-size: 1.1em;
+            margin: 10px 0;
+            color: #ccc;
+        }
+        .product .price {
+            font-size: 1.3em;
+            color: #fff;
+        }
+        .buy-button {
+            padding: 12px 25px;
+            background-color: #00e5b0;
+            border: none;
+            border-radius: 8px;
+            color: #121212;
+            font-size: 1.2em;
+            margin-top: 20px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .buy-button:hover {
+            background-color: #00c49c;
+        }
+        .duration-select {
+            margin-top: 10px;
+            padding: 8px;
+            font-size: 1.1em;
+        }
+        .buy-field {
+            display: none;
+            background-color: #2a2a2a;
+            padding: 25px;
+            border-radius: 10px;
+            margin-top: 20px;
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+            margin: 0 auto;
+        }
+        .buy-field input, .buy-field select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 1em;
+            border-radius: 5px;
+            border: none;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #1f1f1f;
+            font-size: 1em;
+            color: #fff;
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            header {
+                font-size: 2em;
+                padding: 10px;
+            }
+            nav a {
+                font-size: 1em;
+                padding: 8px 15px;
+                margin: 5px 0;
+                width: 100%;
+                text-align: center;
+            }
+            .product {
+                max-width: 100%;
+                padding: 20px;
+            }
+            .product h2 {
+                font-size: 1.8em;
+            }
+            .product p {
+                font-size: 1em;
+            }
+            .product .price {
+                font-size: 1.2em;
+            }
+            .buy-button {
+                font-size: 1em;
+                padding: 10px 20px;
+            }
+            .buy-field input, .buy-field select {
+                font-size: 0.9em;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .product {
+                max-width: 100%;
+                padding: 15px;
+            }
+            .product h2 {
+                font-size: 1.6em;
+            }
+            .buy-button {
+                font-size: 1em;
+                padding: 10px 15px;
+            }
+            .buy-field input, .buy-field select {
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    ChifoBots - Bot Shop
+</header>
+
+<nav>
+    <a href="#products">Produkte</a>
+    <a href="#terms">Nutzungsbedingungen</a>
+    <a href="#legal">Rechtliche Informationen</a>
+</nav>
+
+<main id="products">
+    <div class="product">
+        <h2>Chifo RaidBot</h2>
+        <p>Automatisiertes "Raiden" von Livestreams. Blockiere gezielt Streams.</p>
+        <p class="price">Preis: 19,99€</p>
+        <button class="buy-button" onclick="selectProduct('Chifo RaidBot')">Jetzt kaufen</button>
+    </div>
+
+    <div class="product">
+        <h2>Chifo ChatSpyBot (Add-on)</h2>
+        <p>Lausche privaten Chats und sammle detaillierte Informationen.</p>
+        <p class="price">Preis: 24,99€</p>
+        <button class="buy-button" onclick="selectProduct('Chifo ChatSpyBot')">Jetzt kaufen</button>
+    </div>
+
+    <div class="product">
+        <h2>Chifo DataSpyBot (Add-on)</h2>
+        <p>Extrahiere Standort und persönliche Daten von Nutzern.</p>
+        <p class="price">Preis: 34,99€</p>
+        <button class="buy-button" onclick="selectProduct('Chifo DataSpyBot')">Jetzt kaufen</button>
+    </div>
+</main>
+
+<!-- Buy field -->
+<div class="buy-field" id="buyField">
+    <h2>Produkt kaufen</h2>
+    <p id="productDetails"></p>
+    <select class="duration-select">
+        <option value="1">Monat</option>
+        <option value="6">6 Monate</option>
+        <option value="12">Jahr</option>
+    </select>
+    <input type="text" placeholder="Name" required>
+    <input type="email" placeholder="E-Mail" required>
+    <input type="text" placeholder="Kreditkartennummer" required>
+    <input type="text" placeholder="CVC" required>
+    <button class="buy-button" onclick="completePurchase()">Bezahlen</button>
+</div>
+<script>
+    function selectProduct(productName) {
+        document.getElementById("buyField").style.display = "block";
+        document.getElementById("productDetails").innerText = "Produkt: " + productName;
+    }
+
+    function completePurchase() {
+        alert("Vielen Dank für Ihren Kauf! Ihre Transaktion wurde erfolgreich abgeschlossen.");
+        document.getElementById("buyField").style.display = "none";
+    }
+</script>
+
+<footer>
+    <p>&copy; 2025 ChifoBots. Alle Rechte vorbehalten.</p>
+    <p><a href="#terms" style="color: #fff;">Nutzungsbedingungen</a> | <a href="#legal" style="color: #fff;">Rechtliche Informationen</a></p>
+</footer>
+
+<!-- Nutzungsbedingungen Section -->
+<section id="terms" style="padding: 20px;">
+    <h2>Nutzungsbedingungen</h2>
+    <p>Die Nutzung von ChifoBots erfolgt auf eigene Gefahr. Jegliche illegale Nutzung der Bots ist untersagt. Durch den Kauf eines Produkts bestätigen Sie, dass Sie mit den Nutzungsbedingungen und der EULA einverstanden sind.</p>
+</section>
+
+<!-- Rechtliche Informationen Section -->
+<section id="legal" style="padding: 20px;">
+    <h2>Rechtliche Informationen</h2>
+    <p>Alle von uns angebotenen Produkte sind ausschließlich für den privaten Gebrauch. Jegliche missbräuchliche oder illegale Verwendung der Bots erfolgt auf eigene Verantwortung und auf eigenes Risiko.</p>
+</section>
+
+</body>
+</html>
